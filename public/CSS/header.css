@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    justify-content: flex-start;
+    flex-flow:column;
+    color: #2e3436;
+    font-family:'Climate Crisis', cursive;
+
+}
+
+#titre{
+    display: flex;
+    flex-direction: row;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+li{
+    margin: 0 1em 0 1em;
+}

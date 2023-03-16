@@ -1,11 +1,28 @@
 *{
     color: #2e3436;
-    font-family: 'Climate Crisis', cursive;
+}
+
+html{
+    height: 100%;
 }
 
 body{
     width: 100%;
+    min-height:100%;
+    position: relative;
+
 }
+footer{
+    height: 20vh;
+    position:absolute ;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content : center;
+}
+
 
 a{
     text-decoration: none;

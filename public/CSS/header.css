@@ -2,22 +2,66 @@ header{
     display: flex;
     justify-content: flex-start;
     flex-flow:column;
-    color: #2e3436;
     font-family:'Climate Crisis', cursive;
-
+    border-bottom: solid 1px #4e555b;
 }
 
 #titre{
     display: flex;
+    justify-content: center;
     flex-direction: row;
+    color: #4e555b;
+    font-size: 1em;
+}
+nav{
+    display: flex;
+    font-family: 'Roboto Mono', monospace;
+    font-weight:bolder;
+
 }
 
-ul{
+header nav li:hover{
+    text-decoration: line-through 2px #80bdff;
+
+}
+
+header nav ul{
+    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     list-style-type: none;
 }
 
-li{
-    margin: 0 1em 0 1em;
+@counter-style thumbs {
+    system: cyclic;
+    symbols: "\002B50";
+    suffix: " ";
+}
+
+main li{
+    width: 100%;
+    margin: 1em 1em 0 12em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    list-style-type: none;
+    text-align: left;
+    display: flex;
+
+}
+
+main li:hover{
+    font-weight: bolder;
+    font-size: 1.5em;
+    list-style: thumbs;
+}
+
+#wishTitle{
+    display: block;
+    width: 30%;
+}
+
+#deleteWish {
+    width: 1em;
+    margin-left: 2em;
 }

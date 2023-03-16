@@ -1,0 +1,17 @@
+version: '3'
+services:
+  bdd:
+    container_name: mysqlBucket
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: enieni
+      MYSQL_DATABASE: bucketListdb
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - bdd-bucket:/var/lib/mysql
+
+volumes:
+  bdd-bucket:

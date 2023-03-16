@@ -6,8 +6,11 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}My Bucket List!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         <link rel="icon" href="{{ asset('images/favicon.png') }}"
@@ -24,24 +27,32 @@
         {% block header %}
             <div id="titre">
             <link rel="stylesheet" href="{{ asset('CSS/header.css') }}">
-            <a href="{{ path('main_home') }}"> <img src="{{ asset('images/logo.png') }}"></a>
+                <a href="{{ path('main_home') }}"> <img src="{{ asset('images/logo.png') }}"></a>
             <h1> <a href="{{ path('main_home') }}">Bucket-List</a></h1>
 
             </div>
             <nav>
             <ul>
                 <li> <a href="{{ path('main_home') }}">Home</a></li>
-                <li> <a href="{{ path('main_home') }}">Test</a></li>
+                <li> <a href="{{ path('wish_list') }}">Wish List</a></li>
+                <li> <a href="{{ path('wish_ajouterWish') }}">Make A Wish</a></li>
+                <li> <a href="{{ path('main_aboutus') }}">About us</a></li>
+
+
             </ul>
             </nav>
         {% endblock %}
 
 
     </header>
-        {% block body %}{% endblock %}
-        {% block footer %}
-            <p>{{ 'now' | date('Y') }} ©Bucket-List</p>
-        {% endblock %}
+    <main>
 
+        {% block body %}{% endblock %}
+    </main>
+
+        <footer>
+
+            <p>{{ 'now' | date('Y') }} ©Bucket-List</p>
+        </footer>
     </body>
 </html>

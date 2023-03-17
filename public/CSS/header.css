@@ -49,11 +49,10 @@ main li{
     display: flex;
 
 }
-
 main li:hover{
     font-weight: bolder;
     font-size: 1.5em;
-    list-style: thumbs;
+    list-style-type: thumbs;
 }
 
 #wishTitle{

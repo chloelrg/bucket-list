@@ -6,6 +6,7 @@ use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,16 +32,22 @@ class WishController extends AbstractController
     ): Response
     {
         $wish = new Wish();
-        $wish ->setDateCreated(new \DateTime());
-        $wish ->setIsPublished(true);
 
         $wishForm = $this->createForm(WishType::class,$wish);
         $wishForm -> handleRequest($request);
 
         if($wishForm->isSubmitted() && $wishForm->isValid()){
-            $entityManager ->persist($wish);
-            $entityManager ->flush();
-            return  $this->redirectToRoute('wish_list');
+
+            try{
+                $wish ->setDateCreated(new \DateTime());
+                $wish ->setIsPublished(true);
+                $entityManager ->persist($wish);
+                $entityManager ->flush();
+                $this -> addFlash('succes','Votre souhait a été enregistré');
+                return  $this->redirectToRoute('wish_list');
+            }catch (\Exception $exception){
+                return $this->redirectToRoute('wish_ajouterWish');
+            }
         }
         return $this->render('wish/ajouterWish.html.twig',
         compact('wishForm'));
@@ -51,8 +58,14 @@ class WishController extends AbstractController
         EntityManagerInterface  $entityManager
     ): Response
     {
-        $entityManager->remove($wish);
-        $entityManager->flush();
+        try{
+            $entityManager->remove($wish);
+            $entityManager->flush();
+        }catch(\Exception $exception ){
+            $this -> addFlash($exception->getMessage());
+            return $this->redirectToRoute('wish_list');
+        }
+
 
         return $this->redirectToRoute('wish_list');
     }

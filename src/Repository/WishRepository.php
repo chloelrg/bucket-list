@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Wish;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,6 +41,15 @@ class WishRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllWithCategory()
+    {
+        $queryBuilder = ($this->createQueryBuilder('w'))
+            ->leftJoin('w.category', 'category')
+            ->addSelect('category');
+        $query = $queryBuilder->getQuery();
+        $paginator = new Paginator($query);
+        return $paginator;
+    }
 //    /**
 //     * @return Wish[] Returns an array of Wish objects
 //     */

@@ -18,11 +18,10 @@ class WishController extends AbstractController
     #[Route('/', name: '_list')]
     public function list( WishRepository $wishRepository): Response
     {
-        $whishes = $wishRepository-> findBy(["isPublished"=>true]);
+       // $wishes = $wishRepository-> findBy(["isPublished"=>true]);
+        $wishes = $wishRepository->findAllWithCategory();
         return $this->render('wish/list.html.twig',
-            [
-                'whishes'=>$whishes
-        ]);
+        compact('wishes'));
     }
 
 

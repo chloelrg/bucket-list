@@ -3,13 +3,15 @@
 {% block body %}
     <h1> YOUR WISHES ... </h1>
     <ul>
-        {% for chaqueWish in whishes %}
-            <li>
-                <a id="wishTitle" href="{{ path('wish_wishdetail',{'wish':chaqueWish.id}) }}">
-                    {{ chaqueWish.title }}
-                </a>
-                <a href="{{ path('wish_updateWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/update.jpg') }}"></a>
-                <a href="{{ path('wish_deleteWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/croix.png') }}"></a>
+        {% for chaqueWish in wishes %}
+            <li id="wish">
+                <a id="wishTitle" href="{{ path('wish_wishdetail',{'wish':chaqueWish.id}) }}">{{ chaqueWish.title }}
+                    <span id="categorie">
+                         ({{ chaqueWish.category.name }})
+                    </span></a>
+
+                    <a href="{{ path('wish_updateWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/update.jpg') }}"></a>
+                    <a href="{{ path('wish_deleteWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/croix.png') }}"></a>
             </li>
         {% endfor %}
     </ul>

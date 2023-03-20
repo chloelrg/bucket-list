@@ -22,7 +22,6 @@ nav{
 
 header nav li:hover{
     text-decoration: line-through 2px #80bdff;
-
 }
 
 header nav ul{
@@ -39,28 +38,39 @@ header nav ul{
     suffix: " ";
 }
 
-main li{
+main ul{
     width: 100%;
-    margin: 1em 1em 0 12em;
+    margin: 1em 1em 0 10em;
     font-family: 'Roboto Mono', monospace;
     font-size: 1.5em;
     list-style-type: none;
-    text-align: left;
+    text-align: justify;
     display: flex;
-
+    flex-direction:column;
 }
+
+main li p{
+    font-size: 0.8em;
+}
+
 main li:hover{
     font-weight: bolder;
-    font-size: 1.5em;
+    font-size: 1em;
     list-style-type: thumbs;
 }
 
 #wishTitle{
+    margin: 0.5em;
     display: block;
-    width: 30%;
+    width: 50%;
+    float: left;
 }
 
 #deleteWish {
-    width: 1em;
+    width: 1.2em;
     margin-left: 2em;
+}
+
+#categorie{
+    font-size: 0.5em;
 }

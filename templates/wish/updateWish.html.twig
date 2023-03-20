@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        {{ form_start(wishForm) }}
+            {{ form_widget(wishForm) }}
+            <button>Update</button>
+        {{ form_end(wishForm) }}
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

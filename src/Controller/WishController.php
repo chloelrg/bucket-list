@@ -25,6 +25,7 @@ class WishController extends AbstractController
         ]);
     }
 
+
     #[Route('/ajouter', name: '_ajouterWish')]
     public function ajouterWish(
         Request                 $request,
@@ -53,6 +54,7 @@ class WishController extends AbstractController
         compact('wishForm'));
     }
 
+
     #[Route('/delete/{wish}', name: '_deleteWish')]
     public function deleteWish( Wish $wish,
         EntityManagerInterface  $entityManager
@@ -68,6 +70,23 @@ class WishController extends AbstractController
 
 
         return $this->redirectToRoute('wish_list');
+    }
+
+
+    #[Route('/update/{wish}', name: '_updateWish')]
+    public function updateWish( Wish $wish,
+                                EntityManagerInterface  $entityManager,
+                                Request $request
+    ): Response
+    {
+        $wishForm = $this->createForm(WishType::class,$wish);
+        $wishForm ->handleRequest($request);
+        if($wishForm->isSubmitted()&&$wishForm->isValid()){
+            $entityManager->persist($wish);
+            $entityManager->flush();
+        }
+        return $this->render('wish/updateWish.html.twig',
+            compact('wishForm'));
     }
 
 

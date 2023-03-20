@@ -8,6 +8,7 @@
                 <a id="wishTitle" href="{{ path('wish_wishdetail',{'wish':chaqueWish.id}) }}">
                     {{ chaqueWish.title }}
                 </a>
+                <a href="{{ path('wish_updateWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/update.jpg') }}"></a>
                 <a href="{{ path('wish_deleteWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/croix.png') }}"></a>
             </li>
         {% endfor %}

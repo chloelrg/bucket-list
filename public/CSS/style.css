@@ -10,8 +10,24 @@ body{
     width: 100%;
     min-height:100%;
     position: relative;
+    text-align:center;
 
 }
+
+body #voeux{
+    text-align: center;
+    align-content: center;
+    font-family:'Climate Crisis', cursive;
+    color:#fcd34d;
+}
+
+#phrase{
+    padding-top: 15em;
+    text-align: center;
+    vertical-align: center;
+
+}
+
 footer{
     height: 20vh;
     position:absolute ;

@@ -2,13 +2,12 @@
 
 {% block body %}
     <h1>{{ wish.title }}</h1>
-    <h5> {{ wish.category.name }} </h5>
+    <a href="{{ path('category_afficher', {'category' : wish.category.id}) }}">{{ wish.category.name }}</a>
     <h3>{{ wish.description }}</h3>
-    <h5> Le {{ wish.dateCreated| date("d/m/Y")}} par {{ wish.author }}</h5>
+    <h5> Le {{ wish.dateCreated| date("d/m/Y")}} par {{ wish.user.pseudo }}</h5>
 
 {% endblock %}
 
 {% block title %}
 
 {% endblock %}
-

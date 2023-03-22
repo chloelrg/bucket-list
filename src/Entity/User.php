@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -28,6 +30,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 30)]
+    private ?string $pseudo = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Wish::class, orphanRemoval: true)]
+    private Collection $wishes;
+
+    public function __construct()
+    {
+        $this->wishes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,5 +110,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Wish>
+     */
+    public function getWishes(): Collection
+    {
+        return $this->wishes;
+    }
+
+    public function addWish(Wish $wish): self
+    {
+        if (!$this->wishes->contains($wish)) {
+            $this->wishes->add($wish);
+            $wish->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWish(Wish $wish): self
+    {
+        if ($this->wishes->removeElement($wish)) {
+            // set the owning side to null (unless already changed)
+            if ($wish->getUser() === $this) {
+                $wish->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

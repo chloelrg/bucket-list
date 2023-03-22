@@ -14,6 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Wish|null findOneBy(array $criteria, array $orderBy = null)
  * @method Wish[]    findAll()
  * @method Wish[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
  * @codeCoverageIgnore
  */
 class WishRepository extends ServiceEntityRepository
@@ -43,11 +44,12 @@ class WishRepository extends ServiceEntityRepository
 
     public function findAllWithCategory()
     {
-        $queryBuilder = ($this->createQueryBuilder('w'))
+        $queryBuilder = $this->createQueryBuilder('w')
             ->leftJoin('w.category', 'category')
             ->addSelect('category');
         $query = $queryBuilder->getQuery();
         $paginator = new Paginator($query);
+
         return $paginator;
     }
 //    /**

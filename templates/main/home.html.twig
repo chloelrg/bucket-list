@@ -2,6 +2,16 @@
 
 
         {% block body %}
-        <h2>Welcome to Bucket-List!!</h2>
-                <p>Lorem ipsum dolor sit amet. Sit alias sunt nam perspiciatis dignissimos quo quod impedit et quidem ipsam ut possimus quia aut saepe dicta et ratione mollitia! Et molestiae dolorem cum iusto sunt qui fugit reprehenderit non sint galisum qui dignissimos sint est consequatur provident. Nam similique earum est aliquam porro ut atque obcaecati aut officiis dolores rem asperiores sapiente.</p>
+
+                <div id="phrase">
+                    <h1>Faites vos <span id="voeux">VOEUX</span></h1>
+
+
+       {% if app.user == null %}
+        <div id="connexion">
+                <a id="login" href="{{ path('app_login') }}"><h2>Se connecter!</h2></a>
+                <a id="register"href="{{ path('app_register') }}"><h2>S'inscrire !</h2></a>
+        </div>
+       {% endif %}
+                </div>
         {% endblock %}

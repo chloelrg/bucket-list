@@ -7,12 +7,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 #[ORM\Entity(repositoryClass: WishRepository::class)]
 class Wish
 {
-
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -28,11 +25,6 @@ class Wish
     #[Assert\NotNull]
     private ?string $description = null;
 
-    #[ORM\Column(length: 50)]
-    #[Assert\NotBlank]
-    #[Assert\NotNull]
-    private ?string $author = null;
-
     #[ORM\Column]
     private ?bool $isPublished = null;
 
@@ -44,9 +36,13 @@ class Wish
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\ManyToOne(inversedBy: 'wishes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
-        $this ->dateCreated = new \DateTime();
+        $this->dateCreated = new \DateTime();
     }
 
     public function getId(): ?int
@@ -74,18 +70,6 @@ class Wish
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
 
         return $this;
     }
@@ -122,6 +106,18 @@ class Wish
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

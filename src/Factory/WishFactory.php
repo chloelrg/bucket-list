@@ -11,21 +11,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Wish>
  *
- * @method        Wish|Proxy create(array|callable $attributes = [])
- * @method static Wish|Proxy createOne(array $attributes = [])
- * @method static Wish|Proxy find(object|array|mixed $criteria)
- * @method static Wish|Proxy findOrCreate(array $attributes)
- * @method static Wish|Proxy first(string $sortedField = 'id')
- * @method static Wish|Proxy last(string $sortedField = 'id')
- * @method static Wish|Proxy random(array $attributes = [])
- * @method static Wish|Proxy randomOrCreate(array $attributes = [])
+ * @method        Wish|Proxy                     create(array|callable $attributes = [])
+ * @method static Wish|Proxy                     createOne(array $attributes = [])
+ * @method static Wish|Proxy                     find(object|array|mixed $criteria)
+ * @method static Wish|Proxy                     findOrCreate(array $attributes)
+ * @method static Wish|Proxy                     first(string $sortedField = 'id')
+ * @method static Wish|Proxy                     last(string $sortedField = 'id')
+ * @method static Wish|Proxy                     random(array $attributes = [])
+ * @method static Wish|Proxy                     randomOrCreate(array $attributes = [])
  * @method static WishRepository|RepositoryProxy repository()
- * @method static Wish[]|Proxy[] all()
- * @method static Wish[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Wish[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static Wish[]|Proxy[] findBy(array $attributes)
- * @method static Wish[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Wish[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Wish[]|Proxy[]                 all()
+ * @method static Wish[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Wish[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static Wish[]|Proxy[]                 findBy(array $attributes)
+ * @method static Wish[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Wish[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
 final class WishFactory extends ModelFactory
 {

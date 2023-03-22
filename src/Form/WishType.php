@@ -16,17 +16,15 @@ class WishType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('author')
             ->add('category', EntityType::class,
-                        ['class' => Category::class,
-                        'choice_label' => 'name'] )
+                ['class' => Category::class,
+                'choice_label' => 'name'])
             ->add('dateCreated',
                 null,
                 [
-                    "html5"=>true,
-                    "widget"=>"single_text"
+                    'html5' => true,
+                    'widget' => 'single_text',
                 ])
-
 
         ;
     }

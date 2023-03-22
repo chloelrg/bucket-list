@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Wish;
 use App\Factory\WishFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;

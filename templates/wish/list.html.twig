@@ -15,7 +15,12 @@
                     <a href="{{ path('wish_deleteWish',{'wish':chaqueWish.id}) }}"><img id="deleteWish" src="{{ asset('images/croix.png') }}"></a>
             </li>
         {% endfor %}
+
+
     </ul>
+    {% if wishes is empty %}
+    <p id="nowish">Vous n'avez aucun voeux en cours...</p>
+{% endif %}
 {% endblock %}
 
 

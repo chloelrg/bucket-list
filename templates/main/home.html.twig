@@ -4,7 +4,7 @@
         {% block body %}
 
                 <div id="phrase">
-                    <h1>Faites vos <span id="voeux">VOEUX</span></h1>
+                    <h1>Faites vos <a id="voeux" href="{{ path('wish_ajouterWish') }}">VOEUX</a></h1>
 
 
        {% if app.user == null %}
